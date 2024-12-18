@@ -8,6 +8,19 @@
   --bgcolor2Main: #ccf57b;
   --bgColor2Fade: #335326;
 
-    --bgcolor2Main: #c89150;
+  --bgcolor2Main: #c89150;
   --bgColor2Fade: #6d3711;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(120deg, var(--bgcolor1Main), var(--bgcolor2Main));
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
 }
