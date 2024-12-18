@@ -27,6 +27,8 @@ export const CardDetails = [
       </p>
     ),
     image: img1,
+    startColor: "#2b0163",
+    endColor: "#0c0726",
   },
   {
     name: <p>cartoon character</p>,
@@ -46,6 +48,8 @@ export const CardDetails = [
       </p>
     ),
     image: img2,
+    startColor: "#2b0163",
+    endColor: "#0c0726",
   },
   {
     name: <p>cartoon character</p>,
@@ -65,6 +69,8 @@ export const CardDetails = [
       </p>
     ),
     image: img3,
+    startColor: "#2b0163",
+    endColor: "#0c0726",
   },
   {
     name: <p>cartoon character</p>,
@@ -84,26 +90,38 @@ export const CardDetails = [
       </p>
     ),
     image: img4,
+    startColor: "#2b0163",
+    endColor: "#0c0726",
   },
 ];
 
 type sharedBgProps = {
   children: React.ReactNode;
   className: string;
+  style?: React.CSSProperties;
 };
 
-export const SharedBackground = ({ children }: sharedBgProps) => {
-  return <motion.div>{children}</motion.div>;
+export const SharedBackground = ({
+  children,
+  className,
+  style,
+}: sharedBgProps) => {
+  return (
+    <motion.div className={className} style={style}>
+      {children}
+    </motion.div>
+  );
 };
 
 type SharedIamge = {
   src: string;
+  className: string;
 };
 
-export const SharedImage = ({ src }: SharedIamge) => {
+export const SharedImage = ({ src, className }: SharedIamge) => {
   return (
     <motion.div>
-      <img src={src} alt="sharedImage" />
+      <img src={src} alt="sharedImage" className={className} />
     </motion.div>
   );
 };
