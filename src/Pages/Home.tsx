@@ -4,25 +4,37 @@ import "swiper/css/pagination";
 import { CardDetails, SharedBackground } from "../components/Shared";
 import { Navigation, Keyboard, Mousewheel } from "swiper/modules";
 import { SharedImage } from "../components/Shared";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Swiper as SwiperInstance } from "swiper";
 export const Home = () => {
-  // const [thumbSwiper, setThumbSwiper] = useState<SwiperInstance | null>(null);
-  const [background, setBackground] = useState(
-    `radial-gradient(circle, ${CardDetails[0].startColor}, ${CardDetails[0].endColor})`
-  );
+  // const [background, setBackground] = useState<string>(
+  //   `radial-gradient(circle, ${CardDetails[1].startColor}, ${CardDetails[1].endColor})`
+  // );
+  const [swipers, setSwiper] = useState<SwiperInstance | null>(null);
+  console.log(swipers?.activeIndex);
 
-  console.log(background);
+  useEffect(() => {
+    // if (swipers?.activeIndex !== undefined) {
+    //   setBackground(
+    //     `radial-gradient(circle, ${
+    //       CardDetails[swipers.activeIndex].startColor
+    //     }, ${CardDetails[swipers.activeIndex].endColor})`
+    //   );
+    // }
+    console.log(swipers?.activeIndex);
+  }, [swipers]);
+
   return (
     <div
-      style={{
-        background: background,
-        transition: "background 0.8s ease",
-      }}
+    // style={{
+    //   background: background,
+    //   transition: "background 0.8s ease",
+    // }}
     >
       <Swiper
         direction={"vertical"}
+        // loop={true}
         keyboard={true}
-       
         spaceBetween={20}
         speed={800}
         mousewheel={true}
@@ -32,14 +44,7 @@ export const Home = () => {
         modules={[Navigation, Keyboard, Mousewheel]}
         className="w-full h-screen overflow-hidden relative flex justify-center "
         onSlideChange={(swiper) => {
-          const cardDetail = CardDetails[swiper.realIndex];
-          if (cardDetail) {
-            setBackground(
-              `radial-gradient(circle, ${cardDetail.startColor}, ${cardDetail.endColor})`
-            );
-          } else {
-            console.error(`CardDetails[${swiper.realIndex}] is undefined`);
-          }
+          setSwiper(swiper);
         }}
       >
         {CardDetails.map((val, index) => (
@@ -50,13 +55,13 @@ export const Home = () => {
             <SwiperSlide key={index}>
               <div className="flex flex-col pt-[20dvh] mx-8 ">
                 <div className="flex justify-between ">
-                  <h1 className="w-32 uppercase text-2xl">{val.name}</h1>
+                  <h1 className="w-32 uppercase ">{val.name}</h1>
                   <h4 className="w-1/4">{val.short}</h4>
 
                   {/* <div>{val.description}</div> */}
                 </div>
                 <div className="flex justify-center relative">
-                  <p className="absolute text-[10rem] -z-10 font-bold uppercase">
+                  <p className="absolute text-[10rem] -z-10 font-black uppercase">
                     stylish
                   </p>
                   <SharedImage
