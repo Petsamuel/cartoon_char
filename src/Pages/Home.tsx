@@ -22,31 +22,28 @@ export const Home = () => {
     <div
       style={{
         background: background,
-        transition: "background 0.8s ease",
+        transition: "background 0.8s ease-in-out",
       }}
+      className="h-screen relative w-full"
     >
-      {/* new */}
-      <motion.div className="flex justify-between  py-[16dvh] px-[3dvw]">
+      <motion.div className="flex justify-between  pt-[16dvh] px-[3dvw] z-50 absolute w-full">
         <h1 className="w-32 uppercase ">cartoon character</h1>
-        <h4 className="w-1/4">
+        <motion.h4 className="w-1/4 cursor-pointer">
           lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           officiis!
-        </h4>
-
-        {/* <div>{val.description}</div> */}
+        </motion.h4>
       </motion.div>
       <Swiper
         direction={"vertical"}
-        // loop={true}
         keyboard={true}
         spaceBetween={20}
-        speed={900}
+        speed={400}
         mousewheel={true}
         pagination={{
           clickable: true,
         }}
         modules={[Navigation, Keyboard, Mousewheel]}
-        className="w-full h-screen overflow-hidden relative flex justify-center"
+        className="w-full h-screen   flex justify-center"
         onSlideChange={(swiper) => {
           setSwiper(swiper.activeIndex);
         }}
@@ -55,18 +52,19 @@ export const Home = () => {
         {CardDetails.map((_, index) => (
           <SharedBackground
             key={index}
-            className="justify-center flex  w-screen overflow-hidden relative"
+            className="justify-center flex relative"
           >
-            <SwiperSlide key={index}>
-              <div className="flex flex-col mx-8 overflow-hidden">
-                <motion.div className="flex justify-center">
+            <SwiperSlide key={index} className="overflow-hidden  h-[50%]">
+              <motion.div className="flex flex-col  mx-8  ">
+                <motion.div className="flex justify-center mt-[40dvh] overflow-hidden">
                   <SharedImage
                     swipers={swipers}
                     src={CardDetails[swipers].image}
-                    className="z-20 object-cover  w-[30dvw] bg-no-repeat"
+                    className="z-20 object-cover lg:w-[50dvw] h-auto bg-no-repeat hover:cursor-pointer absolute"
+                    handleClick={() => {}}
                   />
                 </motion.div>
-              </div>
+              </motion.div>
             </SwiperSlide>
           </SharedBackground>
         ))}

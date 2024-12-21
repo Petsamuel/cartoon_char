@@ -49,20 +49,22 @@ export const SharedBackground = ({
 
 type SharedIamge = {
   src: string;
-  className: string;
-  swipers: number;
+  className?: string;
+  swipers?: number;
   layoutId?: string;
+  handleClick?: () => void;
 };
 
 export const SharedImage = ({
   src,
   className,
   swipers,
+  handleClick,
 }: // layoutId,
 SharedIamge) => {
   return (
-    <motion.div className="justify-center relative items-center flex w-full">
-      <motion.p className="absolute text-[15dvw] -z-10 font-black uppercase">
+    <motion.div className="justify-center items-center flex w-full">
+      <motion.p layout className=" text-[15dvw] -z-10 font-black uppercase">
         {swipers === 0
           ? "stylish"
           : swipers === 1
@@ -71,7 +73,13 @@ SharedIamge) => {
           ? "sports"
           : "laugh"}
       </motion.p>
-      <motion.img src={src} alt="sharedImage" className={className} />
+      <motion.img
+        layout
+        src={src}
+        alt="sharedImage"
+        className={`${className}`}
+        onClick={() => handleClick}
+      />
     </motion.div>
   );
 };
