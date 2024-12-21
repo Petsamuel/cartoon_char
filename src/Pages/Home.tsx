@@ -6,7 +6,6 @@ import { Navigation, Keyboard, Mousewheel } from "swiper/modules";
 import { SharedImage } from "../components/Shared";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-// import { Swiper as SwiperInstance } from "swiper";
 export const Home = () => {
   const [background, setBackground] = useState<string>();
   const [swipers, setSwiper] = useState(0);
