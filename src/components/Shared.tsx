@@ -60,21 +60,29 @@ export const SharedImage = ({
   className,
   swipers,
   handleClick,
-}: // layoutId,
-SharedIamge) => {
+  layoutId,
+}: SharedIamge) => {
   return (
     <motion.div className="justify-center items-center flex w-full">
-      <motion.p layout className=" text-[15dvw] -z-10 font-black uppercase">
+      <motion.p
+        layout
+        layoutId={layoutId}
+        initial={{ opacity: 0.5, y: 100 }}
+        whileInView={{ opacity: 1, y: -0 }}
+       
+        className=" text-[15dvw] -z-10 font-black uppercase block"
+      >
         {swipers === 0
           ? "stylish"
           : swipers === 1
-          ? "laugh"
+          ? "cranky"
           : swipers === 2
           ? "sports"
           : "laugh"}
       </motion.p>
       <motion.img
         layout
+        layoutId={layoutId}
         src={src}
         alt="sharedImage"
         className={`${className}`}

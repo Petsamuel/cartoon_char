@@ -16,7 +16,7 @@ export const Header = () => {
     { name: "Cart", icon: <FaBagShopping /> },
   ];
   return (
-    <section>
+    <section className="z-50">
       <nav className="flex justify-between mx-8 p-4">
         <ul className="flex space-x-8 ">
           <div className="cursor-pointer font-bold flex items-center gap-4 z-30">
