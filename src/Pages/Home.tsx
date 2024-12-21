@@ -5,70 +5,67 @@ import { CardDetails, SharedBackground } from "../components/Shared";
 import { Navigation, Keyboard, Mousewheel } from "swiper/modules";
 import { SharedImage } from "../components/Shared";
 import { useEffect, useState } from "react";
-import { Swiper as SwiperInstance } from "swiper";
+import { motion } from "framer-motion";
+// import { Swiper as SwiperInstance } from "swiper";
 export const Home = () => {
-  // const [background, setBackground] = useState<string>(
-  //   `radial-gradient(circle, ${CardDetails[1].startColor}, ${CardDetails[1].endColor})`
-  // );
-  const [swipers, setSwiper] = useState<SwiperInstance | null>(null);
-  console.log(swipers?.activeIndex);
+  const [background, setBackground] = useState<string>();
+  const [swipers, setSwiper] = useState(0);
+  console.log(swipers);
 
   useEffect(() => {
-    // if (swipers?.activeIndex !== undefined) {
-    //   setBackground(
-    //     `radial-gradient(circle, ${
-    //       CardDetails[swipers.activeIndex].startColor
-    //     }, ${CardDetails[swipers.activeIndex].endColor})`
-    //   );
-    // }
-    console.log(swipers?.activeIndex);
+    setBackground(
+      `radial-gradient(circle, ${CardDetails[swipers].startColor} 0%, ${CardDetails[swipers].endColor} 100%)`
+    );
   }, [swipers]);
 
   return (
     <div
-    // style={{
-    //   background: background,
-    //   transition: "background 0.8s ease",
-    // }}
+      style={{
+        background: background,
+        transition: "background 0.8s ease",
+      }}
     >
+      {/* new */}
+      <motion.div className="flex justify-between  py-[16dvh] px-[3dvw]">
+        <h1 className="w-32 uppercase ">cartoon character</h1>
+        <h4 className="w-1/4">
+          lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          officiis!
+        </h4>
+
+        {/* <div>{val.description}</div> */}
+      </motion.div>
       <Swiper
         direction={"vertical"}
         // loop={true}
         keyboard={true}
         spaceBetween={20}
-        speed={800}
+        speed={900}
         mousewheel={true}
         pagination={{
           clickable: true,
         }}
         modules={[Navigation, Keyboard, Mousewheel]}
-        className="w-full h-screen overflow-hidden relative flex justify-center "
+        className="w-full h-screen overflow-hidden relative flex justify-center"
         onSlideChange={(swiper) => {
-          setSwiper(swiper);
+          setSwiper(swiper.activeIndex);
         }}
+        slidesPerView={1}
       >
-        {CardDetails.map((val, index) => (
+        {CardDetails.map((_, index) => (
           <SharedBackground
             key={index}
-            className="justify-center flex  w-screen h-screen overflow-hidden "
+            className="justify-center flex  w-screen overflow-hidden relative"
           >
             <SwiperSlide key={index}>
-              <div className="flex flex-col pt-[20dvh] mx-8 ">
-                <div className="flex justify-between ">
-                  <h1 className="w-32 uppercase ">{val.name}</h1>
-                  <h4 className="w-1/4">{val.short}</h4>
-
-                  {/* <div>{val.description}</div> */}
-                </div>
-                <div className="flex justify-center relative">
-                  <p className="absolute text-[10rem] -z-10 font-black uppercase">
-                    stylish
-                  </p>
+              <div className="flex flex-col mx-8 overflow-hidden">
+                <motion.div className="flex justify-center">
                   <SharedImage
-                    src={val.image}
-                    className="z-20 object-cover h-auto"
+                    swipers={swipers}
+                    src={CardDetails[swipers].image}
+                    className="z-20 object-cover  w-[30dvw] bg-no-repeat"
                   />
-                </div>
+                </motion.div>
               </div>
             </SwiperSlide>
           </SharedBackground>

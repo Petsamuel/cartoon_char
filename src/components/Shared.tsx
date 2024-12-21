@@ -8,90 +8,24 @@ import img4 from "../assets/image/4.png";
 
 export const CardDetails = [
   {
-    name: <p>cartoon character</p>,
-    short: (
-      <p>
-        lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        officiis!
-      </p>
-    ),
-    description: (
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-        aspernatur porro mollitia corporis sequi aut odio eveniet, provident
-        natus ut at eum commodi dolor consequuntur obcaecati consectetur id
-        iusto neque! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Autem harum sequi, distinctio blanditiis dolor neque deleniti tempore,
-        a, labore reiciendis quos! Laboriosam quisquam neque quae dolorum ipsa
-        nam tenetur. Autem!
-      </p>
-    ),
     image: img1,
     startColor: "#2b0163",
     endColor: "#0c0726",
   },
   {
-    name: <p>cartoon character</p>,
-
-    short: (
-      <p>
-        lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        officiis!
-      </p>
-    ),
-    description: (
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut fugit
-        nesciunt optio nostrum natus labore, repellendus expedita minus totam
-        quibusdam et dolorem enim eveniet alias saepe eaque impedit ipsum
-        doloribus?
-      </p>
-    ),
     image: img2,
-    startColor: "#2b0163",
-    endColor: "#0c0726",
+    startColor: "#f6c427",
+    endColor: "#9b3801",
   },
   {
-    name: <p>cartoon character</p>,
-
-    short: (
-      <p>
-        lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        officiis!
-      </p>
-    ),
-    description: (
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor magnam
-        minima molestiae enim necessitatibus ullam, libero accusamus quam. Iste
-        laborum officia veritatis ullam officiis corporis autem facilis
-        necessitatibus quod ipsam.
-      </p>
-    ),
     image: img3,
-    startColor: "#2b0163",
-    endColor: "#0c0726",
+    startColor: "#ccf57b",
+    endColor: "#335326",
   },
   {
-    name: <p>cartoon character</p>,
-
-    short: (
-      <p>
-        lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        officiis!
-      </p>
-    ),
-    description: (
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
-        consequuntur neque nemo distinctio totam animi autem hic, possimus alias
-        labore ducimus libero quam eum? Rem beatae sequi doloribus recusandae
-        tempore!
-      </p>
-    ),
     image: img4,
-    startColor: "#2b0163",
-    endColor: "#0c0726",
+    startColor: "#c89150",
+    endColor: "#6d3711",
   },
 ];
 
@@ -116,12 +50,28 @@ export const SharedBackground = ({
 type SharedIamge = {
   src: string;
   className: string;
+  swipers: number;
+  layoutId?: string;
 };
 
-export const SharedImage = ({ src, className }: SharedIamge) => {
+export const SharedImage = ({
+  src,
+  className,
+  swipers,
+}: // layoutId,
+SharedIamge) => {
   return (
-    <motion.div>
-      <img src={src} alt="sharedImage" className={className} />
+    <motion.div className="justify-center relative items-center flex w-full">
+      <motion.p className="absolute text-[15dvw] -z-10 font-black uppercase">
+        {swipers === 0
+          ? "stylish"
+          : swipers === 1
+          ? "laugh"
+          : swipers === 2
+          ? "sports"
+          : "laugh"}
+      </motion.p>
+      <motion.img src={src} alt="sharedImage" className={className} />
     </motion.div>
   );
 };
