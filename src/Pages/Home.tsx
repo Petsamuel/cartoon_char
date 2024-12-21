@@ -30,14 +30,16 @@ export const Home = () => {
     >
       <motion.div
         layout
-        className={`  pt-[16dvh] px-[3dvw] z-50 absolute  ${
+        className={`lg:pt-[16dvh] pt-[15dvh] lg:px-[3dvw] px-[10dvw] z-20 absolute  lg:gap-[3rem] gap-[2rem] ${
           activeToons === swipers
-            ? "flex gap-[5rem]"
-            : "flex justify-between w-full"
+            ? "flex lg:flex-row flex-col justify-center lg:justify-start "
+            : "flex lg:justify-between w-full justify-center lg:flex-row flex-col"
         }`}
       >
-        <motion.h1 className="w-32 uppercase ">cartoon character</motion.h1>
-        <motion.h4 className="w-1/4 cursor-pointer">
+        <motion.h1 className="w-32 uppercase font-bold">
+          cartoon character
+        </motion.h1>
+        <motion.h4 className="lg:w-1/4 cursor-pointer">
           {activeToons === 0
             ? "A character who is fashionable, trendy, and always dressed in the latest styles. This character is known for their impeccable taste and sense of fashion."
             : activeToons === 1
@@ -74,22 +76,23 @@ export const Home = () => {
           >
             <SwiperSlide
               key={index}
-              className="overflow-hidden  h-[50%] w-full"
+              className="overflow-hidden  lg:h-[50%] w-full"
             >
               <motion.div className="flex flex-col ">
                 <motion.div
-                  className="flex justify-center mt-[40dvh] overflow-hidden"
+                  className="flex justify-center lg:mt-[40dvh] mt-[100%] overflow-hidden"
                   onClick={() =>
                     setActiveToons(index === activeToons ? undefined : index)
                   }
                 >
                   <SharedImage
                     swipers={swipers}
+                    activeToon={activeToons}
                     src={CardDetails[swipers].image}
-                    className={` object-cover lg:w-[50dvw] h-auto bg-no-repeat hover:cursor-pointer ${
+                    className={` object-cover  h-auto bg-no-repeat hover:cursor-pointer ${
                       activeToons === index
-                        ? "scale-150 w-[10dvw]"
-                        : "scale-100 absolute"
+                        ? "w-[100%]"
+                        : "absolute lg:w-[45dvw] w-[100%]"
                     }`}
                   />
                 </motion.div>

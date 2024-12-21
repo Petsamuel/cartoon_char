@@ -19,7 +19,7 @@ export const Header = () => {
     <section className="z-50">
       <nav className="flex justify-between mx-8 p-4">
         <ul className="flex space-x-8 ">
-          <div className="cursor-pointer font-bold flex items-center gap-4 z-30">
+          <div className="cursor-pointer font-bold flex items-center gap-4 z-50">
             <p>Cartoonz</p>
             <GiHamburgerMenu
               onClick={() => setToggle(!toggle)}
@@ -35,9 +35,9 @@ export const Header = () => {
           </div>
           {/* mobile */}
           {toggle && (
-            <div className="absolute right-0 h-screen top-0 lg:hidden w-1/2 z-30 bg-white p-4">
+            <div className="absolute right-0 h-screen top-0 lg:hidden w-1/2 z-50 bg-white p-4 text-black">
               {menu.map((val, index) => (
-                <li key={index} className="py-6">
+                <li key={index} className="py-8">
                   <a className="cursor-pointer capitalize ">{val.name}</a>
                 </li>
               ))}

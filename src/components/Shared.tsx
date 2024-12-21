@@ -52,6 +52,7 @@ type SharedIamge = {
   className?: string;
   swipers?: number;
   layoutId?: string;
+  activeToon?: number;
   handleClick?: () => void;
 };
 
@@ -61,6 +62,7 @@ export const SharedImage = ({
   swipers,
   handleClick,
   layoutId,
+  activeToon,
 }: SharedIamge) => {
   return (
     <motion.div className="justify-center items-center flex w-full">
@@ -69,8 +71,9 @@ export const SharedImage = ({
         layoutId={layoutId}
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: -0 }}
-       
-        className=" text-[15dvw] -z-10 font-black uppercase block"
+        className={`text-[15dvw] -z-10 font-black uppercase ${
+          activeToon ? "" : ""
+        }`}
       >
         {swipers === 0
           ? "stylish"
